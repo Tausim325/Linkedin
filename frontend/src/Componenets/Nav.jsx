@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci";
 import { AiFillHome } from "react-icons/ai";
 import { FaUserFriends, FaCommentDots, FaBriefcase } from "react-icons/fa";
 import { IoNotifications } from "react-icons/io5";
-import logo from "../assets/logo.png";
+import logo from "../assets/Logo.png";
 import profile from "../assets/profile.png";
 import { userDataContext } from "../Context/UserContext";
 import { authDataContext } from "../Context/AuthContext";
