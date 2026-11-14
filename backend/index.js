@@ -15,18 +15,24 @@ dotenv.config();
 let app=express();
 
 let server=  http.createServer(app)
-export const io=new Server(server,{
-cors : ({
-    origin: "http://localhost:5173",
+export const io = new Server(server, {
+  cors: {
+    origin: [
+      "https://linkedin-clone-q9hw.onrender.com",
+      "http://localhost:5173"
+    ],
     credentials: true,
-  })
-})
+  }
+});
 
 app.use(express.json())
 app.use(cookieParser())
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "https://linkedin-clone-q9hw.onrender.com",
+      "http://localhost:5173"
+    ],
     credentials: true,
   })
 );
