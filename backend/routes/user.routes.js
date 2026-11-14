@@ -1,7 +1,7 @@
 import express from "express"
 import { getCurrentUser, getprofile, getSuggestedUser, search, updateProfile } from "../controllers/user.Controllers.js"
 import isAuth from "../middlewares/isAuth.js"
-import upload from "../middlewares/multer.js"
+import upload from "../middlewares/Multer.js"
 
 let userRouter=express.Router()
 
