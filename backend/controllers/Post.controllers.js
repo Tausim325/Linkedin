@@ -1,5 +1,5 @@
 import Post from "../models/post.model.js"
-import uploadOnCloudinary from "../config/cloudinary.js"
+import uploadOnCloudinary from "../config/Cloudinary.js"
 import { io } from "../index.js";
 import Notification from "../models/notification.model.js"
 
