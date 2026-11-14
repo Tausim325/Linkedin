@@ -1,5 +1,5 @@
 import User from "../models/user.model.js";
-import uploadOnCloudinary from "../config/cloudinary.js";
+import uploadOnCloudinary from "../config/Cloudinary.js";
 import Connection from "../models/connection.model.js"
 
 export const getCurrentUser = async (req, res) => {
