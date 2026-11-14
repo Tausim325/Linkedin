@@ -14,7 +14,7 @@ import { io } from "socket.io-client";
 import ConnectionButton from "./ConnectionButton";
 
 // Same URL as your serverUrl
-let socket = io("http://localhost:8000", {
+let socket = io("https://linkedin-backend-9boo.onrender.com", {
   withCredentials: true,
 });
 
