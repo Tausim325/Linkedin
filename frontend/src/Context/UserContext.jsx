@@ -52,10 +52,15 @@ function UserContext({ children }) {
     }
   };
 
-  useEffect(() => {
-    getCurrentUser();
+ useEffect(() => {
+  getCurrentUser();
+}, []);
+
+useEffect(() => {
+  if (userData) {
     getPost();
-  }, []);
+  }
+}, [userData]);
 
   const value = {
     userData,
