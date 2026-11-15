@@ -8,17 +8,22 @@ const uploadOnCloudinary = async (filePath) => {
     api_secret: process.env.CLOUDINARY_API_SECRET,
   });
 
+  if (!filePath) return null;
+
   try {
-    if (!filePath) {
-      return null;
-    }
     const uploadResult = await cloudinary.uploader.upload(filePath);
-    fs.unlinkSync(filePath);
     return uploadResult.secure_url;
   } catch (error) {
-    // image me catch khali hai, yahan error handle karna hai
-    if (filePath) fs.unlinkSync(filePath);
-    console.log(error);
+    console.log("Cloudinary upload error:", error);
+    throw error;
+  } finally {
+    try {
+      await fs.promises.unlink(filePath);
+    } catch (error) {
+      if (error.code !== "ENOENT") {
+        console.log("File cleanup error:", error);
+      }
+    }
   }
 };
 
