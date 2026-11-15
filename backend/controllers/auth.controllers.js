@@ -38,8 +38,8 @@ if (existEmail) {
    res.cookie("token", token,{
     httpOnly: true,
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    sameSite: "strict",
-    secure : process.env.NODE_ENV==="production"
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    secure: process.env.NODE_ENV === "production"
    })
    return res.status(201).json(user)
 
@@ -67,8 +67,8 @@ if (!user) {
    res.cookie("token", token,{
     httpOnly: true,
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    sameSite: "strict",
-    secure : process.env.NODE_ENV==="production"
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+   secure: process.env.NODE_ENV === "production"
    })
    return res.status(200).json(user)
 }catch(error){
@@ -80,7 +80,11 @@ if (!user) {
 export const logout = async (req, res)=>{
 
 try {
-    res.clearCookie("token");
+    res.clearCookie("token", {
+  httpOnly: true,
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  secure: process.env.NODE_ENV === "production"
+});
     return res.status(200).json({ message: "Logout successfully" });
   } catch (error) {
     console.log(error);
