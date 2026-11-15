@@ -25,7 +25,6 @@ function Login() {
         { withCredentials: true }
       );
       setUserData(result.data);
-      navigate("/")
       setErr("");
       setLoading(false);
       setEmail("");
