@@ -18,7 +18,7 @@ let server=  http.createServer(app)
 export const io = new Server(server, {
   cors: {
     origin: [
-      "http://localhost:5173",
+      "https://linkedin-frontend-kjz5.onrender.com",
       process.env.FRONTEND_URL,
     ].filter(Boolean),
     credentials: true,
@@ -31,7 +31,7 @@ app.use(cookieParser())
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
+      "https://linkedin-frontend-kjz5.onrender.com",
       process.env.FRONTEND_URL,
     ].filter(Boolean),
     credentials: true,
