@@ -13,7 +13,7 @@ import { Server } from "socket.io";
 import notificationRouter from "./routes/notification.routes.js"
 dotenv.config();
 let app=express();
-
+app.set("trust proxy", 1);
 let server=  http.createServer(app)
 export const io = new Server(server, {
   cors: {
