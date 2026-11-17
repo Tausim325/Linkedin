@@ -21,17 +21,18 @@ function Nav() {
   const navigate = useNavigate();
 
   const handleSignOut = async () => {
-    try {
-      await axios.get(serverUrl + "/api/auth/logout", {
-        withCredentials: true,
-      });
-      setUserData(null);
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  try {
+    await axios.get(serverUrl + "/api/auth/logout", {
+      withCredentials: true,
+    });
+  } catch (error) {
+    console.log(error);
+  } finally {
+    localStorage.removeItem("token");
+    setUserData(null);
+    navigate("/login");
+  }
+};
   // Search with 400ms debounce (no API call on every key press)
   useEffect(() => {
     if (!searchInput.trim()) {
