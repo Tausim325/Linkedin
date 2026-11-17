@@ -45,7 +45,7 @@ if (existEmail) {
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     secure: process.env.NODE_ENV === "production"
    })
-   return res.status(201).json(sanitizeUser(user))
+   return res.status(201).json({ ...sanitizeUser(user), token })
 
 }catch(error){
 console.log("Signup error:", error);
@@ -74,7 +74,7 @@ if (!user) {
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
    secure: process.env.NODE_ENV === "production"
    })
-   return res.status(200).json(sanitizeUser(user))
+  return res.status(200).json({ ...sanitizeUser(user), token })
 }catch(error){
     console.log(error);
      return res.status(500).json({message:"login error"})
