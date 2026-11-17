@@ -19,10 +19,12 @@ export const io = new Server(server, {
   cors: {
     origin: [
       "http://localhost:5173",
-    ],
+      process.env.FRONTEND_URL,
+    ].filter(Boolean),
     credentials: true,
   }
 });
+
 
 app.use(express.json())
 app.use(cookieParser())
@@ -30,11 +32,12 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-    ],
+      process.env.FRONTEND_URL,
+    ].filter(Boolean),
     credentials: true,
   })
 );
-let port=process.env.PORT || 800
+let port=process.env.PORT || 8000
 app.use("/api/auth", authRouter)
 app.use("/api/user", userRouter)
 app.use("/api/post", postRouter);

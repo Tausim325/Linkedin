@@ -10,13 +10,13 @@ import { authDataContext } from "../Context/AuthContext";
 import { userDataContext } from "../Context/UserContext";
 import { MdDelete } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
-import { io } from "socket.io-client";
+import socket from "../Context/socket";
 import ConnectionButton from "./ConnectionButton";
 
 // Same URL as your serverUrl
-let socket = io("http://localhost:8000", {
-  withCredentials: true,
-});
+// let socket = io("http://localhost:8000", {
+//   withCredentials: true,
+// });
 
 function Post({ id, author, like, comment, description, image, createdAt }) {
   const [more, setMore] = useState(false);

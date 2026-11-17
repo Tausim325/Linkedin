@@ -1,12 +1,11 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { io } from "socket.io-client";
 import { authDataContext } from "../Context/AuthContext";
 import { userDataContext } from "../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 
-const socket = io("");
+import socket from "../Context/socket";
 
 function ConnectionButton({ userId }) {
   const { serverUrl } = useContext(authDataContext);
