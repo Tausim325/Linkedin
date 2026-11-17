@@ -18,8 +18,7 @@ let server=  http.createServer(app)
 export const io = new Server(server, {
   cors: {
     origin: [
-      "https://linkedin-clone-q9hw.onrender.com",
-      "http://localhost:5173"
+      "http://localhost:5173",
     ],
     credentials: true,
   }
@@ -30,18 +29,16 @@ app.use(cookieParser())
 app.use(
   cors({
     origin: [
-      "https://linkedin-clone-q9hw.onrender.com",
-      "http://localhost:5173"
+      "http://localhost:5173",
     ],
     credentials: true,
   })
 );
-let port=process.env.PORT || 500
+let port=process.env.PORT || 800
 app.use("/api/auth", authRouter)
 app.use("/api/user", userRouter)
 app.use("/api/post", postRouter);
 app.use("/api/connection", connectionRouter);
-//app.use("/api/notofication", NotificationRouter);
 app.use("/api/notification", notificationRouter)
 export const userSocketMap= new Map()
 

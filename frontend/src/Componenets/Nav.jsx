@@ -315,12 +315,12 @@ function Nav() {
         </div>
 
         <div
-          className="flex flex-col items-center cursor-pointer text-gray-600"
-          onClick={() => navigate("/notification")}
-        >
-          <IoNotifications className="text-[22px]" />
-          <span className="text-[11px]">Notifications</span>
-        </div>
+              className="flex flex-col items-center cursor-pointer text-gray-600 hover:text-black"
+              onClick={() => showComingSoon("Messaging")}
+            >
+              <FaCommentDots className="text-[22px]" />
+              <span className="text-[12px]">Messaging</span>
+            </div>
       </div>
     </>
   );

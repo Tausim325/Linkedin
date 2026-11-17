@@ -122,7 +122,7 @@ function Profile() {
                   </span>
                 </div>
                 <div className="text-[14px] text-[#0a66c2] font-semibold mt-[6px] cursor-pointer hover:underline">
-                  {profileData?.connection?.length || 0} connections
+                 {profileData?.connectionCount ?? profileData?.connection?.length ?? 0} connections
                 </div>
               </div>
 

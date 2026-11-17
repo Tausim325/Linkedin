@@ -11,6 +11,7 @@ function UserContext({ children }) {
   let [edit, setEdit] = useState(false);
   let [postData, setPostData] = useState([]);
   let [profileData, setProfileData] = useState(null);
+  let [loading, setLoading] = useState(true);
   let navigate = useNavigate();
 
   // Logged-in user
@@ -20,10 +21,13 @@ function UserContext({ children }) {
         withCredentials: true,
       });
       setUserData(result.data);
+      
     } catch (error) {
       console.log(error);
       setUserData(null);
-    }
+    } finally {
+    setLoading(false);
+  }
   };
 
   // All posts
@@ -65,6 +69,7 @@ useEffect(() => {
   const value = {
     userData,
     setUserData,
+    loading,
     edit,
     setEdit,
     postData,

@@ -9,8 +9,14 @@ import Profile from "./pages/Profile";
 import Notification from "./pages/Notification.jsx";
 
 function App() {
-  let { userData } = useContext(userDataContext);
-
+  let { userData,loading } = useContext(userDataContext);
+if (loading) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center text-gray-600">
+        Loading...
+      </div>
+    );
+  }
   return (
     <Routes>
       <Route path="*" element={<Navigate to="/" />} />

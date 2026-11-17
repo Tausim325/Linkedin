@@ -2,6 +2,10 @@ import genToken from "../config/token.js";
 import User from "../models/user.model.js"
 import bcrypt from "bcryptjs";
 
+const sanitizeUser = (user) => {
+  const { password, ...rest } = user.toObject();
+  return rest;
+};
 //signup part
 export const signUp = async (req, res)=>{
 try{
@@ -41,7 +45,7 @@ if (existEmail) {
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     secure: process.env.NODE_ENV === "production"
    })
-   return res.status(201).json(user)
+   return res.status(201).json(sanitizeUser(user))
 
 }catch(error){
 console.log("Signup error:", error);
@@ -70,7 +74,7 @@ if (!user) {
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
    secure: process.env.NODE_ENV === "production"
    })
-   return res.status(200).json(user)
+   return res.status(200).json(sanitizeUser(user))
 }catch(error){
     console.log(error);
      return res.status(500).json({message:"login error"})

@@ -79,6 +79,7 @@ function Home() {
       });
    
       await getPost();
+      handleClosePopup();
       setUploadPost(false);
     } catch (error) {
       console.log(error);
@@ -317,15 +318,7 @@ function Home() {
                   type="button"
                   disabled={posting || (!description.trim() && !backendImage)}
                   className="bg-[#0a66c2] text-white text-[16px] font-semibold px-[24px] py-[8px] rounded-full cursor-pointer hover:bg-[#004182] disabled:opacity-50 disabled:cursor-not-allowed"
-                  onClick={() => {
-                    console.log({
-                      description,
-                      image: backendImage,
-                    });
-
-                    setUploadPost(true);
-                    handleUploadPost();
-                  }}
+                  onClick={handleUploadPost}
                 >
                   {posting ? "Posting..." : "Post"}
                 </button>
