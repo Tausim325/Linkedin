@@ -4,7 +4,7 @@ import React, { createContext } from "react";
 export const authDataContext = createContext();
 
 function AuthContext({ children }) {
-  const serverUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+  const serverUrl = import.meta.env.VITE_SERVER_URL || "https://linkedin-backend-x36e.onrender.com";
 
   const value = {
     serverUrl,
