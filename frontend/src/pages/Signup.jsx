@@ -19,34 +19,32 @@ const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 const [loading, setLoading]= useState(false)
 const [err, setErr]=useState("")
-const handleSignUp = async (e)=>{
-  e.preventDefault()
-  setLoading(true)
-try{
-let result = await axios.post(serverUrl+"/api/auth/signup",{
-firstName,
-lastName,
-userName,
-email,
-password
-
-},{withCredentials:true})
-setErr("")
-console.log(result);
-setUserData(result.data)
-navigate("/")
-setErr("")
-setLoading(false)
-setFirstName("")
-setLastName("")
-setEmail("")
-setPassword("")
-setUserName("")
-}catch(error){
- setErr(error.response.data.message)
- setLoading(false)
-}
-}
+  
+const handleSignUp = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const result = await axios.post(
+        serverUrl + "/api/auth/signup",
+        { firstName, lastName, userName, email, password },
+        { withCredentials: true }
+      );
+      const { token, ...user } = result.data;
+      if (token) localStorage.setItem("token", token);
+      setUserData(user);
+      setErr("");
+      setLoading(false);
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
+      setUserName("");
+      navigate("/");
+    } catch (error) {
+      setErr(error.response?.data?.message || "Something went wrong");
+      setLoading(false);
+    }
+  };
   return (
     <div className="w-full min-h-screen bg-[#8a8ac2] pb-[40px] flex flex-col items-center justify-start gap-[10px]">
       <div className="p-[35px] lg:p-[35px] w-full h-[80px] flex items-center">
