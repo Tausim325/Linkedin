@@ -15,7 +15,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
 
-  const handleSignIn = async (e) => {
+ const handleSignIn = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
@@ -24,7 +24,9 @@ function Login() {
         { email, password },
         { withCredentials: true }
       );
-      setUserData(result.data);
+      const { token, ...user } = result.data;
+      if (token) localStorage.setItem("token", token);
+      setUserData(user);
       setErr("");
       setLoading(false);
       setEmail("");
